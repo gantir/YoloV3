@@ -86,3 +86,42 @@ ffmpeg -i src/woody-intro.mp4  images/woody-intro/image-%03d.png
 ffmpeg -i src/woody-dance.mp4  images/woody-dance/image-%03d.png
 ffmpeg -i src/woody-toy.mp4  images/woody-toy/image-%03d.png
 ```
+```
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/src/woody-car.mp4" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-car/image-%03d.png"
+
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/src/woody-dance.mp4" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-dance/image-%03d.png"
+
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/src/woody-toy.mp4" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-toy/image-%03d.png"
+
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/src/woody-intro.mp4" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-intro/image-%03d.png"
+
+```
+
+## To box annotate the images
+
+```
+python detect.py --conf-thres 0.3 --output "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/box-images/"
+
+python detect.py --conf-thres 0.3 --source "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-car/" --output "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-car/"
+
+python detect.py --conf-thres 0.3 --source "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-dance/" --output "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-dance/"
+
+python detect.py --conf-thres 0.3 --source "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-toy/" --output "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-toy/"
+
+python detect.py --conf-thres 0.3 --source "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/images/woody-intro/" --output "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-intro/"
+
+```
+
+## Reconstructing videos with box images
+
+```
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-car/image-%03d.png" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-src/woody-car.mp4"
+
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-dance/image-%03d.png" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-src/woody-dance.mp4"
+
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-toy/image-%03d.png" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-src/woody-toy.mp4"
+
+!ffmpeg -i "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-images/woody-intro/image-%03d.png" "/content/gdrive/My Drive/Colab Notebooks/EVA4/data/yolov3/videos/box-src/woody-intro.mp4"
+
+
+```
