@@ -1,0 +1,4 @@
+classes=1
+train=data/dronedata/drone-train.txt
+valid=data/dronedata/drone-val.txt
+names=data/dronedata/drone.names
